@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".imc.imcActivity">
+
+
+    <ImageView
+        android:id="@+id/imagenView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/imclogo"
+        app:layout_constraintBottom_toTopOf="@+id/textAltura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="32dp"
+        android:text="Altura"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagenView" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/alturaTextEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/purple_700"
+        android:hint="ex: 175 cm"
+        android:inputType="number"
+        android:paddingBottom="16dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAltura"
+        tools:text="" />
+
+
+    <TextView
+        android:id="@+id/textPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Peso"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alturaTextEdit" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/pesoTextEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/purple_700"
+        android:hint="ex: 75.2"
+        android:inputType="numberDecimal"
+        android:paddingBottom="16dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPeso"
+        tools:text="" />
+
+    <TextView
+        android:id="@+id/resultTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorEntreRojoYNaranja"
+        android:textSize="36dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btnCalcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pesoTextEdit"
+        tools:text="13 MC"
+        />
+
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:text="Calcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultTxt" />
+
+    <Button
+        android:id="@+id/btnLimpiar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorEntreRojoYNaranja"
+        android:padding="12dp"
+        android:text="Limpiar"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCalcular"
+        android:layout_marginBottom="20dp"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
