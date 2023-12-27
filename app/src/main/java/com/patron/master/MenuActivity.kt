@@ -31,7 +31,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun navigateToIMCActivity(){
-        var intentimcActivity = Intent(this, ImcActivity::class.java)
+        val intentimcActivity = Intent(this, ImcActivity::class.java)
         startActivity(intentimcActivity)
     }
 }
