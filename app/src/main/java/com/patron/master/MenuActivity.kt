@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.patron.master.firstapp.FirstAppActivity
-import com.patron.master.imc.imcActivity
+import com.patron.master.imc.ImcActivity
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun navigateToIMCActivity(){
-        var intentimcActivity = Intent(this, imcActivity::class.java)
+        var intentimcActivity = Intent(this, ImcActivity::class.java)
         startActivity(intentimcActivity)
     }
 }

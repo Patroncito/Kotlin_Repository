@@ -2,15 +2,15 @@ package com.patron.master.imc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.patron.master.R
+import kotlin.math.pow
 
-class imcActivity : AppCompatActivity() {
+class ImcActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_imc)
@@ -28,7 +28,6 @@ class imcActivity : AppCompatActivity() {
         }
 
 
-
         // Action to clean button, to clean data
         limpiarBtn.setOnClickListener {
             limpiarData(resultTxt, textEditAltura, textEditPeso)
@@ -36,7 +35,11 @@ class imcActivity : AppCompatActivity() {
     }
 
 
-    private fun calcularIMC(textViewResult: TextView, textEditAltura : AppCompatEditText, textEditPeso: AppCompatEditText) {
+    private fun calcularIMC(
+        textViewResult: TextView,
+        textEditAltura: AppCompatEditText,
+        textEditPeso: AppCompatEditText
+    ) {
 
 
         if (textEditAltura.text.toString().isNotEmpty() && textEditPeso.text.toString()
@@ -47,42 +50,25 @@ class imcActivity : AppCompatActivity() {
             // SE HARA EL CALCULO DEL IMC
             // IMC = (PESO(KG) / (ALTURA(METROS))´2 )
 
-            val peso : Float = textEditPeso.text.toString().toFloat()
-            val altura : Double = textEditAltura.text.toString().toDouble()
+            val peso: Float = textEditPeso.text.toString().toFloat()
+            val altura: Double = textEditAltura.text.toString().toDouble()
 
-            val IMCFinal = String.format("%.2f", (peso/Math.pow((altura/100),2.0))).toDouble()
-          // Mandando el resultado final al textView de la UI
+            val imcFinal = String.format("%.2f", (peso / (altura / 100).pow(2.0))).toDouble()
 
-            // Asignando colores.
-
-            val colorBajo = R.color.azulCyan
-            val colorAdecuado = R.color.azulClaro
-            val colorSobrepeso = R.color.verde
-            val colorObesidadGrado1 = R.color.amarillo
-            val colorObesidadGrado2 = R.color.naranja
-            val colorObesidadGrado3 = R.color.rojo
-
-            // Asignando rangos.
-            val rangoBajo = 0.0..18.5
-            val rangoAdecuado = 18.5..24.9
-            val rangoSobrepeso = 25.0..29.9
-            val rangoObesidadGrado1 = 30.0..34.9
-            val rangoObesidadGrado2 = 35.0..39.9
-            val rangoObesidadGrado3 = 40.0..100.0
 
             // Evaluando el IMC y Asignando el color correspondiente
 
             val color: Int = when {
-                IMCFinal in rangoBajo -> colorBajo
-                IMCFinal in rangoBajo -> colorBajo
-                IMCFinal in rangoAdecuado -> colorAdecuado
-                IMCFinal in rangoSobrepeso -> colorSobrepeso
-                IMCFinal in rangoObesidadGrado1 -> colorObesidadGrado1
-                IMCFinal in rangoObesidadGrado2 -> colorObesidadGrado2
+                imcFinal in 0.0..18.5 -> R.color.azulCyan
+                imcFinal in 18.5..24.9 -> R.color.azulClaro
+                imcFinal in 25.0..29.9 -> R.color.verde
+                imcFinal in 30.0..34.9 -> R.color.amarillo
+                imcFinal in 35.0..39.9 -> R.color.naranja
+                imcFinal in 40.0..100.0 -> R.color.rojo
                 else -> R.color.black // Puedes usar un color predeterminado para otros casos
             }
-
-            textViewResult.text = IMCFinal.toString()
+            // Mandando el resultado final al textView de la UI
+            textViewResult.text = imcFinal.toString()
             textViewResult.setTextColor(ContextCompat.getColor(this, color))
 
             //textViewResult.setTextColor(ContextCompat.getColor(this, color))
@@ -94,12 +80,13 @@ class imcActivity : AppCompatActivity() {
         } else {
             mostrarToast("Ingresa la Altura y el Peso")
         }
-
-
-
     }
 
-    private fun limpiarData(textViewResult: TextView, textEditAltura : AppCompatEditText, textEditPeso: AppCompatEditText){
+    private fun limpiarData(
+        textViewResult: TextView,
+        textEditAltura: AppCompatEditText,
+        textEditPeso: AppCompatEditText
+    ) {
 
         // Formatear IMC en 0
         textViewResult.text = ""
@@ -109,7 +96,6 @@ class imcActivity : AppCompatActivity() {
 
         //Formatear TextEditAltura
         textEditAltura.setText("")
-
 
 
     }
